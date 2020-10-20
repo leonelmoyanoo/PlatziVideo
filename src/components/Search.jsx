@@ -2,13 +2,13 @@ import React from 'react';
 /* CSS */
 import '../assets/styles/components/Search.scss';
 /* TEXT */
-const main__title = '¿Qué quieres ver hoy?';
-const input__placeholder = 'Buscar...';
+const MAIN_TITLE = '¿Qué quieres ver hoy?';
+const INPUT_PLACEHOLDER = 'Buscar...';
 
 const Search = () => (
     <section className="main">
-        <h2 className="main__title">{main__title}</h2>
-        <input type="text" className="input" placeholder={input__placeholder} />
+        <h2 className="main__title">{MAIN_TITLE}</h2>
+        <input type="text" className="input" placeholder={INPUT_PLACEHOLDER} />
     </section>
 );
 export default Search;

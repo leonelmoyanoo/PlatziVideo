@@ -1,6 +1,11 @@
 import React from 'react';
 /* CSS */
 import '../assets/styles/components/Header.scss';
+/* TEXT */
+const PROFILE = 'Perfil';
+const ACCOUNT = 'Cuenta';
+const LOG_OUT = 'Cerrar Sesión';
+
 
 const Header = () => (
     <header className="header">
@@ -8,11 +13,11 @@ const Header = () => (
         <div className="header__menu">
             <div className="header__menu--profile">
                 <img src="../assets/user-icon.png" alt="Icon" />
-                <p>Perfil</p>
+                <p>{PROFILE}</p>
             </div>
             <ul>
-                <li><a href="/">Cuenta</a></li>
-                <li><a href="/">Cerrar Sesión</a></li>
+                <li><a href="/">{ACCOUNT}</a></li>
+                <li><a href="/">{LOG_OUT}</a></li>
             </ul>
         </div>
     </header>
