@@ -53,6 +53,19 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                /* Regla para usar imagenes png, gif y jpg */
+                test:  /\.(png|gif|jpg)$/,
+                use:[
+                    {
+                        'loader':'file-loader',
+                        /* Se guarde el nombre con un hash */
+                        options:{
+                            name: 'assets/[hash].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },

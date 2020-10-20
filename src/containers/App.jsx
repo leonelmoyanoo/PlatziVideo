@@ -27,6 +27,21 @@ const App = () => (
             </Carousel>
         </Categories>
 
+        {/* CAROUSEL */}
+        <Categories>
+            <Carousel>
+                <CarouselItem />
+                <CarouselItem />
+            </Carousel>
+        </Categories>
+
+        {/* CAROUSEL */}
+        <Categories>
+            <Carousel>
+                <CarouselItem />
+            </Carousel>
+        </Categories>
+
         <Footer />
     </div>
 );
