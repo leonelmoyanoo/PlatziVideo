@@ -6,6 +6,8 @@ import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
+/* FOOTER */
+import Footer from '../components/Footer';
 
 /* CSS */
 import '../assets/styles/App.scss'
@@ -14,6 +16,7 @@ const App = () => (
     <div className="App">
         <Header />
         <Search />
+
         {/* CAROUSEL */}
         <Categories>
             <Carousel>
@@ -23,6 +26,8 @@ const App = () => (
                 <CarouselItem />
             </Carousel>
         </Categories>
+
+        <Footer />
     </div>
 );
 export default App;
