@@ -18,7 +18,7 @@ const App = () => (
         <Search />
 
         {/* CAROUSEL */}
-        <Categories>
+        <Categories title="My list">
             <Carousel>
                 <CarouselItem />
                 <CarouselItem />
@@ -28,7 +28,7 @@ const App = () => (
         </Categories>
 
         {/* CAROUSEL */}
-        <Categories>
+        <Categories title="Trendings">
             <Carousel>
                 <CarouselItem />
                 <CarouselItem />
@@ -36,7 +36,7 @@ const App = () => (
         </Categories>
 
         {/* CAROUSEL */}
-        <Categories>
+        <Categories title="Platzi Video Originals">
             <Carousel>
                 <CarouselItem />
             </Carousel>
