@@ -8,19 +8,25 @@ import '../assets/styles/components/CarouselItem.scss';
 /* TEXT */
 const TITLE = 'Título descriptivo';
 const SUBTITLE = '2019 16+ 114 minutos';
-const CarouselItem = () => (
+const CarouselItem = ({ cover, title, year, contentRating, duration, source }) => (
 
     <div className="carousel-item">
         <img className="carousel-item__img"
-            src="https://images.pexels.com/photos/789822/pexels-photo-789822.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="" />
+            src={cover}
+            alt={title} />
         <div className="carousel-item__details">
             <div>
-                <img className="carousel-item__details--img" src={playICON} alt="Play Icon" />
+                <a href={source} target="_blank">
+                    <img className="carousel-item__details--img" src={playICON} alt="Play Icon" />
+                </a>
                 <img className="carousel-item__details--img" src={plusICON} alt="Plus Icon" />
             </div>
-            <p className="carousel-item__details--title">{TITLE}</p>
-            <p className="carousel-item__details--subtitle">{SUBTITLE}</p>
+            <p className="carousel-item__details--title">{title}</p>
+            <p className="carousel-item__details--subtitle">
+                {
+                    `${year} ${contentRating} ${duration} minutes`
+                }
+            </p>
         </div>
     </div>
 );
