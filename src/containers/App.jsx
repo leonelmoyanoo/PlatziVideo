@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 /* COMPONENTS */
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -12,37 +12,50 @@ import Footer from '../components/Footer';
 /* CSS */
 import '../assets/styles/App.scss'
 
-const App = () => (
-    <div className="App">
-        <Header />
-        <Search />
+const API = "http://localhost:3000/initalState";
 
-        {/* CAROUSEL */}
-        <Categories title="My list">
-            <Carousel>
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-            </Carousel>
-        </Categories>
+const App = () => {
+    const [ videos, setVideos ] = useState([]);
 
-        {/* CAROUSEL */}
-        <Categories title="Trendings">
-            <Carousel>
-                <CarouselItem />
-                <CarouselItem />
-            </Carousel>
-        </Categories>
+    useEffect(()=>{
+        fetch(API)
+        .then(response=>response.json()) /* TRANSFORMO LA DATA A JSON */
+        .then(data=>setVideos(data))
+    },[]);
+    console.log(videos);
 
-        {/* CAROUSEL */}
-        <Categories title="Platzi Video Originals">
-            <Carousel>
-                <CarouselItem />
-            </Carousel>
-        </Categories>
+    return (
+        <div className="App">
+            <Header />
+            <Search />
 
-        <Footer />
-    </div>
-);
+            {/* CAROUSEL */}
+            <Categories title="My list">
+                <Carousel>
+                    <CarouselItem />
+                    <CarouselItem />
+                    <CarouselItem />
+                    <CarouselItem />
+                </Carousel>
+            </Categories>
+
+            {/* CAROUSEL */}
+            <Categories title="Trendings">
+                <Carousel>
+                    <CarouselItem />
+                    <CarouselItem />
+                </Carousel>
+            </Categories>
+
+            {/* CAROUSEL */}
+            <Categories title="Platzi Video Originals">
+                <Carousel>
+                    <CarouselItem />
+                </Carousel>
+            </Categories>
+
+            <Footer />
+        </div>
+    )
+};
 export default App;
