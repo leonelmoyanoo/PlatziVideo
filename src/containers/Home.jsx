@@ -9,8 +9,6 @@ import CarouselItem from '../components/CarouselItem';
 /* FOOTER */
 import Footer from '../components/Footer';
 
-/* CSS */
-import '../assets/styles/App.scss'
 /* CUSTOM HOOK */
 import useInitialState from "../hooks/useInitialState";
 
@@ -21,8 +19,7 @@ const Home = () => {
 
     return initalState.length === 0 ? <h1>Loading...</h1>:
     (
-        <div className="App">
-            <Header />
+        <>
             <Search />
             {
                 initalState.mylist?.length > 0 &&
@@ -54,9 +51,7 @@ const Home = () => {
                     }
                 </Carousel>
             </Categories>
-
-            <Footer />
-        </div>
+        </>
     )
 };
 export default Home;
