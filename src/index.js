@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 /* REDUX */
 import { Provider } from 'react-redux';
-import { createStore } from 'redux;'
+import { createStore } from 'redux';
 /* REDUCER */
 import reducer from './reducers';
 
@@ -11,7 +11,7 @@ import App from './routes/App'
 const initalState = {
     "user":{},
     "playing":{},
-    "mylist": [],
+    "myList": [],
     "trends": [{
         "id": 2,
         "slug": "tvshow-2",

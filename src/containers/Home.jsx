@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from 'react';
+/* REDUX */
+import { connect } from 'react-redux';
 /* COMPONENTS */
-import Header from '../components/Header';
 import Search from '../components/Search';
 /* CAROUSEL */
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-/* FOOTER */
-import Footer from '../components/Footer';
 
 /* CUSTOM HOOK */
 import useInitialState from "../hooks/useInitialState";
 
-const API = "http://localhost:3000/initalState/";
 
-const Home = () => {
-    const initalState = useInitialState(API);
+const Home = ({ myList, trends, originals }) => {
 
-    return initalState.length === 0 ? <h1>Loading...</h1>:
-    (
+    return (
         <>
             <Search />
             {
-                initalState.mylist?.length > 0 &&
+                myList?.length > 0 &&
                 <Categories title="My list">
                     <Carousel>
                         <CarouselItem />
@@ -34,7 +30,7 @@ const Home = () => {
             <Categories title="Trendings">
                 <Carousel>
                     {
-                        initalState.trends?.map(item =>
+                        trends?.map(item =>
                             <CarouselItem key={item.id} {...item} />
                         )
                     }
@@ -45,7 +41,7 @@ const Home = () => {
             <Categories title="Platzi Video Originals">
                 <Carousel>
                     {
-                        initalState.originals?.map(item =>
+                        originals?.map(item =>
                             <CarouselItem key={item.id} {...item} />
                         )
                     }
@@ -54,4 +50,12 @@ const Home = () => {
         </>
     )
 };
-export default Home;
+const mapStateToProps = state => {
+    return {
+        myList: state.myList,
+        trends: state.trends,
+        originals: state.originals,
+    }
+}
+
+export default connect(mapStateToProps, null)(Home);
