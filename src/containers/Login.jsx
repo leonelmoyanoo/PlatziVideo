@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /* Imagenes */
 import GoogleIcon from '../assets/static/google-icon.png';
@@ -19,14 +20,20 @@ const Login = () => (
                     <label>
                         <input type="checkbox" id="cbox1" defaultValue="first_checkbox" />Recuérdame
                     </label>
-                    <a href="/">Olvidé mi contraseña</a>
+                    <Link to="/">
+                        Olvidé mi contraseña
+                    </Link>
                 </div>
             </form>
             <section className="login__container--social-media">
                 <div><img src={GoogleIcon} /> Inicia sesión con Google</div>
                 <div><img src={TwitterIcon} /> Inicia sesión con Twitter</div>
             </section>
-            <p className="login__container--register">No tienes ninguna cuenta <a href>Regístrate</a></p>
+            <p className="login__container--register">No tienes ninguna cuenta 
+                <Link to='/Register'>
+                    Regístrate
+                </Link>
+            </p>
         </section>
     </section>
 
