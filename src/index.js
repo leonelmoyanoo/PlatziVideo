@@ -5,7 +5,7 @@ import {createStore} from 'redux;'
 import App from './routes/App'
 
 
-
+/* 2 parametros, la app y donde se va a ejecutar */
 ReactDOM.render(
 <Provider>
     <App/>
