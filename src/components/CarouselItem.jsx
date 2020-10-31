@@ -17,6 +17,7 @@ const TITLE = 'Título descriptivo';
 const SUBTITLE = '2019 16+ 114 minutos';
 const CarouselItem = (props) => {
     const { id, cover, title, year, contentRating, duration, source } = props;
+    const { isList } = props;
 
     const handleSetFavorite = () => {
         props.setFavorite({
@@ -47,16 +48,20 @@ const CarouselItem = (props) => {
                             src={playICON}
                             alt="Play Icon" />
                     </a>
-                    <img
-                        className="carousel-item__details--img"
-                        src={plusICON}
-                        alt="Plus Icon"
-                        onClick={handleSetFavorite} />
-                    <img
-                        className="carousel-item__details--img"
-                        src={removeICON}
-                        alt="Remove Icon"
-                        onClick={()=>handleDeleteFavorite(id)} />
+                    {
+                        isList ?
+                            <img
+                                className="carousel-item__details--img"
+                                src={removeICON}
+                                alt="Remove Icon"
+                                onClick={() => handleDeleteFavorite(id)} />
+                            :
+                            <img
+                                className="carousel-item__details--img"
+                                src={plusICON}
+                                alt="Plus Icon"
+                                onClick={handleSetFavorite} />
+                    }
                 </div>
                 <p className="carousel-item__details--title">{title}</p>
                 <p className="carousel-item__details--subtitle">
