@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+/* ACTIONS */
+import { setFavorite } from '../actions';
+/* PROPTYPES */
 import PropTypes from 'prop-types';
 /* IMAGES */
 import playICON from '../assets/static/play-icon.png';
@@ -9,30 +14,53 @@ import '../assets/styles/components/CarouselItem.scss';
 /* TEXT */
 const TITLE = 'Título descriptivo';
 const SUBTITLE = '2019 16+ 114 minutos';
-const CarouselItem = ({ cover, title, year, contentRating, duration, source }) => (
+const CarouselItem = (props) => {
+    const { id,cover, title, year, contentRating, duration, source } = props;
 
-    <div className="carousel-item">
-        <img className="carousel-item__img"
-            src={cover}
-            alt={title} />
-        <div className="carousel-item__details">
-            <div>
-                <a href={source} target="_blank">
-                    <img className="carousel-item__details--img" src={playICON} alt="Play Icon" />
-                </a>
-                <img className="carousel-item__details--img" src={plusICON} alt="Plus Icon" />
+    const handleSetFavorite = () => {
+        props.setFavorite({
+            id,
+            cover,
+            title,
+            year,
+            contentRating,
+            duration,
+            source
+        })
+    }
+
+    return (
+        <div className="carousel-item">
+            <img className="carousel-item__img"
+                src={cover}
+                alt={title} />
+            <div className="carousel-item__details">
+                <div>
+                    <a href={source} target="_blank">
+                        <img
+                            className="carousel-item__details--img"
+                            src={playICON}
+                            alt="Play Icon" />
+                    </a>
+                    <img
+                        className="carousel-item__details--img"
+                        src={plusICON}
+                        alt="Plus Icon"
+                        onClick={handleSetFavorite} />
+                </div>
+                <p className="carousel-item__details--title">{title}</p>
+                <p className="carousel-item__details--subtitle">
+                    {
+                        `${year} ${contentRating} ${duration} minutes`
+                    }
+                </p>
             </div>
-            <p className="carousel-item__details--title">{title}</p>
-            <p className="carousel-item__details--subtitle">
-                {
-                    `${year} ${contentRating} ${duration} minutes`
-                }
-            </p>
         </div>
-    </div>
-);
+    )
+};
 
 CarouselItem.propTypes = {
+    id: PropTypes.number,
     cover: PropTypes.string,
     title: PropTypes.string,
     year: PropTypes.number,
@@ -41,5 +69,8 @@ CarouselItem.propTypes = {
     source: PropTypes.string
 }
 
+const mapDispatchToProps = {
+    setFavorite
+}
 
-export default CarouselItem;
+export default connect(null, mapDispatchToProps)(CarouselItem);
