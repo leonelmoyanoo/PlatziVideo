@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import {connect} from 'react-redux';
+
+import {loginRequest} from '../actions';
+
 import { Link } from 'react-router-dom';
 
 /* Imagenes */
@@ -7,7 +11,7 @@ import TwitterIcon from '../assets/static/twitter-icon.png';
 /* CSS */
 import '../assets/styles/components/Login.scss';
 
-const Login = () => {
+const Login = props => {
     const [form, setValues] = useState({
         email: '',
     });
@@ -21,7 +25,9 @@ const Login = () => {
 
     const handleSubmit = event =>{
         event.preventDefault();
-        console.log(form);
+        /* Enviar el formulario */
+        props.loginRequest(form);
+        props.history.push('/');
     }
 
 
@@ -69,4 +75,11 @@ const Login = () => {
         </section>
     )
 };
-export default Login;
+const mapDispatchToProps = {
+    loginRequest,
+
+}
+const mapStateToProps = state =>{
+
+}
+export default connect(null,mapDispatchToProps)(Login);
