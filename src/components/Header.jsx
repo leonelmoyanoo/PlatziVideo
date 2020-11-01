@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 /* GRAVATAR */
 import gravatar from '../utils/gravatar';
+/* ACTIONS */
+import { logoutRequest } from '../actions';
+/* PROPTYPES */
+import { PropTypes } from 'prop-types';
 /* IMAGES */
 import logoIMG from '../assets/static/logo-platzi-video-BW2.png';
 import userIMG from '../assets/static/user-icon.png';
@@ -19,7 +23,9 @@ const Header = props => {
     const { user } = props;
     /* Verificando si user tiene elementos */
     const hasUser = Object.keys(user).length > 0;
-    console.log(hasUser);
+    const handleLogOut = () => {
+        props.logoutRequest({});
+    }
     return (
         <header className="header">
 
@@ -43,29 +49,41 @@ const Header = props => {
                     <p>{PROFILE}</p>
                 </div>
                 <ul>
-                    <li>
-                        <Link to="/">
-                            {ACCOUNT}
-                        </Link>
-                    </li>
-                    <li>
-                        {
-                            hasUser
+                    {
+                        hasUser
                             ?
-                            <Link to="/">
-                                {LOG_OUT}
-                            </Link>
+                            (
+                                <>
+                                    <li>
+                                        <Link to="/">
+                                            {user.name}
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="#logOut"
+                                            onClick={handleLogOut}
+                                        >
+                                            {LOG_OUT}
+                                        </Link>
+                                    </li>
+                                </>
+                            )
                             :
-                            <Link to="/login">
-                                {LOG_IN}
-                            </Link>
-                        }
-                    </li>
+                            <li>
+                                <Link to="/login">
+                                    {LOG_IN}
+                                </Link>
+                            </li>
+                    }
                 </ul>
             </div>
         </header>
     )
 };
+Header.propTypes = {
+    user: PropTypes.object
+}
 
 const mapStateToProps = state => {
     return {
@@ -73,4 +91,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Header)
+const mapDispatchToProps = {
+    logoutRequest,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

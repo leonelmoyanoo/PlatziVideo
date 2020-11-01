@@ -5,6 +5,8 @@ import {loginRequest} from '../actions';
 
 import { Link } from 'react-router-dom';
 
+/* PORPTYPES */
+import {PropTypes} from 'prop-types';
 /* Imagenes */
 import GoogleIcon from '../assets/static/google-icon.png';
 import TwitterIcon from '../assets/static/twitter-icon.png';
@@ -75,11 +77,9 @@ const Login = props => {
         </section>
     )
 };
+
 const mapDispatchToProps = {
     loginRequest,
-
-}
-const mapStateToProps = state =>{
 
 }
 export default connect(null,mapDispatchToProps)(Login);
